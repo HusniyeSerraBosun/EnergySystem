@@ -1,0 +1,13 @@
+# Python cache files 
+__pycache__/
+*.pyc
+
+# database files
+*.db
+*.sqlite3
+
+# password files 
+.env
+
+
+
