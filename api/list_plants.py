@@ -12,7 +12,7 @@ router=APIRouter(
     tags=["Asset Management"]
 )
 
-@router.get("/",summary="List all plants")
+@router.get("/",status_code=200,summary="List all plants")
 def list_plants(
     organization_id: Optional[int] = None, # this is for super_admin, if super_admin wants to list plants by org, then it will works
     db:Session=Depends(get_db),

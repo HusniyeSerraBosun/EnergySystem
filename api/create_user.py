@@ -11,7 +11,7 @@ router=APIRouter(
     #dependencies=[Depends(get_current_user)]
 )
 
-@router.post("/",summary="Create new user")
+@router.post("/",status_code=201,summary="Create new user")
 def create_user(
     username:str,
     password:str,
@@ -57,4 +57,4 @@ def create_user(
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-
+    return new_user

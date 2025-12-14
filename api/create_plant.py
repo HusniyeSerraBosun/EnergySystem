@@ -11,7 +11,7 @@ router=APIRouter(
     #dependencies=[Depends(get_current_user)]
 )
 
-@router.post("/",summary="Create New Plant")
+@router.post("/",status_code=201,summary="Create New Plant")
 def create_plant(
     name:str,
     eic:str,

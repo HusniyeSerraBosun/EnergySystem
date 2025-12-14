@@ -13,7 +13,7 @@ router=APIRouter(
     #dependencies=[Depends(get_current_user)]
 )
 
-@router.post("/",summary="Create New Organization")
+@router.post("/",status_code=201,summary="Create New Organization")
 def create_organization(name:str, eic:str, db:Session=Depends(get_db),current_user: models.User = Depends(get_current_user)):
     
     if current_user.role != "super_admin":

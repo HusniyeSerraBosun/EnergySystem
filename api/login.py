@@ -51,7 +51,7 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     return user
 
 # --- LOGIN ENDPOINT ---
-@router.post("/token", summary="Giriş Yap")
+@router.post("/token",status_code=200, summary="Giriş Yap")
 def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     # find user
     user = db.query(models.User).filter(models.User.username == form_data.username).first()

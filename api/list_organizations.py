@@ -11,7 +11,7 @@ router=APIRouter(
     #dependencies=[Depends(get_current_user)]
 )
 
-@router.get("/",summary="List all organizations")
+@router.get("/",status_code=200,summary="List all organizations")
 def list_organizations(db:Session=Depends(get_db),current_user: models.User = Depends(get_current_user)):
     
     if current_user.role != "super_admin":
