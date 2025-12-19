@@ -5,12 +5,10 @@ import models
 
 from .login import get_current_user
 
-#router settings
-#this router is just to add organization 
+
 router=APIRouter(
     prefix="/organizations",
-    tags=["Asset Management"],
-    #dependencies=[Depends(get_current_user)]
+    tags=["Asset Management"]    
 )
 
 @router.post("/",status_code=201,summary="Create New Organization")

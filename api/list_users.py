@@ -7,8 +7,7 @@ from .login import get_current_user
 
 router=APIRouter(
     prefix="/users",
-    tags=["Asset Management"],
-    #dependencies=[Depends(get_current_user)]
+    tags=["Asset Management"]
 )
 
 @router.get("/",status_code=200,summary="List all users")

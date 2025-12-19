@@ -7,8 +7,7 @@ from .login import get_current_user
 
 router=APIRouter(
     prefix="/plants",
-    tags=["Asset Management"],
-    #dependencies=[Depends(get_current_user)]
+    tags=["Asset Management"]    
 )
 
 @router.post("/",status_code=201,summary="Create New Plant")
