@@ -2,10 +2,6 @@
 __pycache__/
 *.pyc
 
-# database files
-*.db
-*.sqlite3
-
 # password files 
 .env
 
