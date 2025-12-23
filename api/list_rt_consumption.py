@@ -21,7 +21,14 @@ def list_realtime_consumption(
     current_user: models.User = Depends(get_current_user)
 ):
     
+    # 👇 Timezone temizliği
+    if start_date.tzinfo is not None:
+        start_date = start_date.replace(tzinfo=None)
     
+    if end_date.tzinfo is not None:
+        end_date = end_date.replace(tzinfo=None)
+
+
     time_limit = datetime.now() - timedelta(hours=2)
 
     # time control 
