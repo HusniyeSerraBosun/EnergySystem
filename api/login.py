@@ -72,4 +72,8 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db:
             "org_id": user.organization_id
         }
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, 
+            "token_type": "bearer",
+            "role": user.role,           
+            "username": user.username,   
+            "org_id": user.organization_id  }
