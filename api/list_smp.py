@@ -20,6 +20,14 @@ def list_smp(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user)
 ):
+    # 1. Timezone Temizliği (Hata almamak için)
+    if start_date.tzinfo is not None:
+        start_date = start_date.replace(tzinfo=None)
+    
+    if end_date.tzinfo is not None:
+        end_date = end_date.replace(tzinfo=None)
+    
+    
     time_limit = datetime.now() - timedelta(hours=4)
 
     if end_date > time_limit:
