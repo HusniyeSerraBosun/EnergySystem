@@ -19,6 +19,14 @@ def list_mpc(
     current_user: models.User = Depends(get_current_user)
 ):
     
+    # 👇 Timezone temizliği
+    if start_date.tzinfo is not None:
+        start_date = start_date.replace(tzinfo=None)
+    
+    if end_date.tzinfo is not None:
+        end_date = end_date.replace(tzinfo=None)
+
+
     results = db.query(
         models.MarketPrice.timestamp,
         models.MarketPrice.price_ptf
