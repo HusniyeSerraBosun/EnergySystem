@@ -52,8 +52,8 @@ const MarketData = () => {
 
       // PTF ve SMP services request
       const [resPTF, resSMF] = await Promise.all([
-        axios.post('http://127.0.0.1:8000/market/ptf', null, { headers, params }),
-        axios.post('http://127.0.0.1:8000/market/smp', null, { headers, params })
+        axios.post('https://energysystem.onrender.com/market/ptf', null, { headers, params }),
+        axios.post('https://energysystem.onrender.com/market/smp', null, { headers, params })
       ]);
 
       const ptfList = resPTF.data;

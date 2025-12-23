@@ -49,7 +49,7 @@ const PlantEvents = () => {
   const fetchPlants = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://127.0.0.1:8000/plants/', {
+      const res = await axios.get('https://energysystem.onrender.com/plants/', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const plantData = res.data || [];
@@ -70,7 +70,7 @@ const PlantEvents = () => {
     setError(null);
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://127.0.0.1:8000/plant-events/', {}, {
+      const res = await axios.post('https://energysystem.onrender.com/plant-events/', {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEvents(res.data || []);
@@ -104,7 +104,7 @@ const PlantEvents = () => {
         affected_capacity: parseFloat(formData.affected_capacity)
       };
 
-      await axios.post('http://127.0.0.1:8000/plant-events/create', payload, {
+      await axios.post('https://energysystem.onrender.com/plant-events/create', payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -139,7 +139,7 @@ const PlantEvents = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://127.0.0.1:8000/plant-events/finish', { event_id: eventId }, {
+      await axios.put('https://energysystem.onrender.com/plant-events/finish', { event_id: eventId }, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

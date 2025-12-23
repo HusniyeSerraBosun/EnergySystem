@@ -41,8 +41,8 @@ const UserOperations = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       const [resUsers, resOrgs] = await Promise.all([
-        axios.get('http://127.0.0.1:8000/users/', { headers }), 
-        axios.get('http://127.0.0.1:8000/organizations/', { headers }) 
+        axios.get('https://energysystem.onrender.com/users/', { headers }), 
+        axios.get('https://energysystem.onrender.com/organizations/', { headers }) 
       ]);
 
       const allUsers = resUsers.data || [];
@@ -105,7 +105,7 @@ const UserOperations = () => {
         organization_id: parseInt(formData.organization_id) 
       };
 
-      await axios.post('http://127.0.0.1:8000/users/', null, {
+      await axios.post('https://energysystem.onrender.com/users/', null, {
         headers: { Authorization: `Bearer ${token}` },
         params: params
       });

@@ -33,7 +33,7 @@ const OrganizationOperations = () => {
     try {
       const token = localStorage.getItem('token');
       // post request
-      await axios.post('http://127.0.0.1:8000/organizations/', null, {
+      await axios.post('https://energysystem.onrender.com/organizations/', null, {
         headers: { Authorization: `Bearer ${token}` },
         params: { name: name, eic: eic }
       });
@@ -63,7 +63,7 @@ const OrganizationOperations = () => {
     setError(null);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://127.0.0.1:8000/organizations/', {
+      const response = await axios.get('https://energysystem.onrender.com/organizations/', {
         headers: { Authorization: `Bearer ${token}` }
       });
       

@@ -49,13 +49,13 @@ const PlantOperations = () => {
       
       if (isReadOnly) {
         // just see the power plants (Admin/Analyst)
-        const resPlants = await axios.get('http://127.0.0.1:8000/plants/', { headers });
+        const resPlants = await axios.get('https://energysystem.onrender.com/plants/', { headers });
         plants = resPlants.data || [];
       } else {
         // for super admin
         const [resPlants, resOrgs] = await Promise.all([
-          axios.get('http://127.0.0.1:8000/plants/', { headers }),
-          axios.get('http://127.0.0.1:8000/organizations/', { headers })
+          axios.get('https://energysystem.onrender.com/plants/', { headers }),
+          axios.get('https://energysystem.onrender.com/organizations/', { headers })
         ]);
         plants = resPlants.data || [];
         orgs = resOrgs.data || [];
@@ -122,7 +122,7 @@ const PlantOperations = () => {
         is_res: formData.is_res
       };
 
-      await axios.post('http://127.0.0.1:8000/plants/', null, {
+      await axios.post('https://energysystem.onrender.com/plants/', null, {
         headers: { Authorization: `Bearer ${token}` },
         params: params
       });

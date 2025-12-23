@@ -52,7 +52,7 @@ const GenerationData = () => {
   const fetchPlants = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://127.0.0.1:8000/plants/', {
+      const res = await axios.get('https://energysystem.onrender.com/plants/', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const sorted = (res.data || []).sort((a, b) => a.name.localeCompare(b.name, 'tr'));
@@ -92,7 +92,7 @@ const GenerationData = () => {
         params.power_plant_id = parseInt(selectedPlant);
       }
 
-      const res = await axios.post('http://127.0.0.1:8000/generation/', null, {
+      const res = await axios.post('https://energysystem.onrender.com/generation/', null, {
         headers: { Authorization: `Bearer ${token}` },
         params: params
       });

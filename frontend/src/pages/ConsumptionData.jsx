@@ -52,9 +52,9 @@ const ConsumptionData = () => {
       // two services in parallel request
       const [resForecast, resRealTime] = await Promise.all([
         // forecast
-        axios.post('http://127.0.0.1:8000/consumption/forecast', null, { headers, params }),
+        axios.post('https://energysystem.onrender.com/consumption/forecast', null, { headers, params }),
         // actual-two hours back
-        axios.post('http://127.0.0.1:8000/consumption/real-time', null, { headers, params })
+        axios.post('https://energysystem.onrender.com/consumption/real-time', null, { headers, params })
       ]);
 
       const forecastList = resForecast.data;

@@ -63,7 +63,7 @@ const Dashboard = () => {
 
     try {
       // power plants
-      const resPlants = await axios.get('http://127.0.0.1:8000/plants/', { headers });
+      const resPlants = await axios.get('https://energysystem.onrender.com/plants/', { headers });
       const plants = resPlants.data || [];
 
       const stats = {
@@ -81,7 +81,7 @@ const Dashboard = () => {
       ].filter(d => d.value > 0));
 
       // consumption 
-      const resCons = await axios.post('http://127.0.0.1:8000/consumption/real-time', null, { 
+      const resCons = await axios.post('https://energysystem.onrender.com/consumption/real-time', null, { 
         headers,
         params: {
           start_date: formatDateForBackend(consumptionStartDate),
@@ -89,7 +89,7 @@ const Dashboard = () => {
         }
       });
       
-      const resForecast = await axios.post('http://127.0.0.1:8000/consumption/forecast', null, {
+      const resForecast = await axios.post('https://energysystem.onrender.com/consumption/forecast', null, {
         headers,
         params: {
           start_date: formatDateForBackend(consumptionStartDate),
@@ -101,7 +101,7 @@ const Dashboard = () => {
       const lastForecast = resForecast.data.length > 0 ? resForecast.data[resForecast.data.length - 1] : { demand_forecast: 0, timestamp: '-' };
 
       // market graph
-      const resSmp = await axios.post('http://127.0.0.1:8000/market/smp', null, {
+      const resSmp = await axios.post('https://energysystem.onrender.com/market/smp', null, {
         headers,
         params: {
           start_date: formatDateForBackend(chartStartDate),
@@ -109,7 +109,7 @@ const Dashboard = () => {
         }
       });
 
-      const resMpc = await axios.post('http://127.0.0.1:8000/market/ptf', null, {
+      const resMpc = await axios.post('https://energysystem.onrender.com/market/ptf', null, {
         headers,
         params: {
           start_date: formatDateForBackend(chartStartDate),
@@ -128,7 +128,7 @@ const Dashboard = () => {
       setMarketChartData(mergedChartData);
 
       // market prices-yesterday
-      const resSmpDaily = await axios.post('http://127.0.0.1:8000/market/smp', null, {
+      const resSmpDaily = await axios.post('https://energysystem.onrender.com/market/smp', null, {
         headers,
         params: {
           start_date: formatDateForBackend(yesterdayStart),
@@ -136,7 +136,7 @@ const Dashboard = () => {
         }
       });
       
-      const resMpcDaily = await axios.post('http://127.0.0.1:8000/market/ptf', null, {
+      const resMpcDaily = await axios.post('https://energysystem.onrender.com/market/ptf', null, {
         headers,
         params: {
           start_date: formatDateForBackend(yesterdayStart),
@@ -155,7 +155,7 @@ const Dashboard = () => {
       };
 
       // generation-yesterday
-      const resGen = await axios.post('http://127.0.0.1:8000/generation/', null, {
+      const resGen = await axios.post('https://energysystem.onrender.com/generation/', null, {
         headers,
         params: {
           start_date: formatDateForBackend(yesterdayStart),
