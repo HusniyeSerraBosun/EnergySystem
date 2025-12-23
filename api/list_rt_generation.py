@@ -64,6 +64,8 @@ def list_realtime_generation(
     query = db.query(
         models.GenerationData.timestamp,
         models.GenerationData.actual_generation,
+        models.GenerationData.planned_generation,
+        models.GenerationData.settlement_generation,
         models.PowerPlant.name.label("plant_name"),
         models.PowerPlant.eic,
         models.PowerPlant.fuel_type,
@@ -95,5 +97,7 @@ def list_realtime_generation(
         "plant_name": row.plant_name,
         "eic": row.eic,
         "fuel_type": row.fuel_type,
-        "actual_generation": row.actual_generation
+        "actual_generation": row.actual_generation,
+        "planned_generation": row.planned_generation,
+        "settlement_generation":row.settlement_generation
     } for row in results]
