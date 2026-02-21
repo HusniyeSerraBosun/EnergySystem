@@ -146,4 +146,33 @@ SELECT cron.schedule(
 );
 
 
+
+CREATE OR REPLACE FUNCTION delete_old_data()
+RETURNS void AS $$
+BEGIN
+  
+  DELETE FROM generation_data 
+  WHERE timestamp < now() - interval '7 days';
+
+  
+  DELETE FROM market_prices 
+  WHERE timestamp < now() - interval '7 days';
+
+  
+  DELETE FROM national_consumption 
+  WHERE timestamp < now() - interval '7 days';
+  
+
+
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT cron.schedule(
+    'daily-data-cleanup', 
+    '30 3 * * *',         
+    $$SELECT delete_old_data()$$
+);
+
+
 SELECT * FROM cron.job;
